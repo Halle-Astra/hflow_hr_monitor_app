@@ -6,7 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EE8BECCD2E8A756300C5A8BD /* hr_monitor_for_watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = EE8BECAD2E8A756200C5A8BD /* hr_monitor_for_watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EE8BECDA2E8A792200C5A8BD /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8BECD92E8A792200C5A8BD /* WatchConnectivity.framework */; platformFilters = (ios, xros, ); };
+		EE8BECE62E8A7D1500C5A8BD /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8BECE52E8A7D1500C5A8BD /* WatchConnectivity.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		EE8BECBA2E8A756300C5A8BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE973EF92E65BC75004910FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE8BECAC2E8A756200C5A8BD;
+			remoteInfo = "hr_monitor_for_watch Watch App";
+		};
+		EE8BECC42E8A756300C5A8BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE973EF92E65BC75004910FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE8BECAC2E8A756200C5A8BD;
+			remoteInfo = "hr_monitor_for_watch Watch App";
+		};
+		EE8BECCB2E8A756300C5A8BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE973EF92E65BC75004910FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE8BECAC2E8A756200C5A8BD;
+			remoteInfo = "hr_monitor_for_watch Watch App";
+		};
 		EE973F102E65BC76004910FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EE973EF92E65BC75004910FD /* Project object */;
@@ -23,14 +50,48 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EE8BECCE2E8A756300C5A8BD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				EE8BECCD2E8A756300C5A8BD /* hr_monitor_for_watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		EE8BECAD2E8A756200C5A8BD /* hr_monitor_for_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hr_monitor_for_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8BECB92E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hr_monitor_for_watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8BECC32E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hr_monitor_for_watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8BECD92E8A792200C5A8BD /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		EE8BECE52E8A7D1500C5A8BD /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		EE973F012E65BC75004910FD /* hr_monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hr_monitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE973F0F2E65BC76004910FD /* hr_monitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hr_monitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE973F192E65BC76004910FD /* hr_monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hr_monitorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		EE973F032E65BC75004910FD /* hr_monitor */ = {
+		EE8BECAE2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "hr_monitor_for_watch Watch App";
+			sourceTree = "<group>";
+		};
+		EE8BECBC2E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "hr_monitor_for_watch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		EE8BECC62E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "hr_monitor_for_watch Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		EE8BECFB2E8A833D00C5A8BD /* hr_monitor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = hr_monitor;
 			sourceTree = "<group>";
@@ -48,10 +109,33 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EE8BECAA2E8A756200C5A8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8BECE62E8A7D1500C5A8BD /* WatchConnectivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECB62E8A756300C5A8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECC02E8A756300C5A8BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE973EFE2E65BC75004910FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8BECDA2E8A792200C5A8BD /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +156,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE8BECD82E8A792200C5A8BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE8BECE52E8A7D1500C5A8BD /* WatchConnectivity.framework */,
+				EE8BECD92E8A792200C5A8BD /* WatchConnectivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EE973EF82E65BC75004910FD = {
 			isa = PBXGroup;
 			children = (
-				EE973F032E65BC75004910FD /* hr_monitor */,
+				EE8BECFB2E8A833D00C5A8BD /* hr_monitor */,
 				EE973F122E65BC76004910FD /* hr_monitorTests */,
 				EE973F1C2E65BC76004910FD /* hr_monitorUITests */,
+				EE8BECAE2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */,
+				EE8BECBC2E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests */,
+				EE8BECC62E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests */,
+				EE8BECD82E8A792200C5A8BD /* Frameworks */,
 				EE973F022E65BC75004910FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +185,9 @@
 				EE973F012E65BC75004910FD /* hr_monitor.app */,
 				EE973F0F2E65BC76004910FD /* hr_monitorTests.xctest */,
 				EE973F192E65BC76004910FD /* hr_monitorUITests.xctest */,
+				EE8BECAD2E8A756200C5A8BD /* hr_monitor_for_watch Watch App.app */,
+				EE8BECB92E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests.xctest */,
+				EE8BECC32E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +195,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EE8BECAC2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8BECD52E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch App" */;
+			buildPhases = (
+				EE8BECA92E8A756200C5A8BD /* Sources */,
+				EE8BECAA2E8A756200C5A8BD /* Frameworks */,
+				EE8BECAB2E8A756200C5A8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EE8BECAE2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */,
+			);
+			name = "hr_monitor_for_watch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "hr_monitor_for_watch Watch App";
+			productReference = EE8BECAD2E8A756200C5A8BD /* hr_monitor_for_watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE8BECB82E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8BECD62E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch AppTests" */;
+			buildPhases = (
+				EE8BECB52E8A756300C5A8BD /* Sources */,
+				EE8BECB62E8A756300C5A8BD /* Frameworks */,
+				EE8BECB72E8A756300C5A8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE8BECBB2E8A756300C5A8BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EE8BECBC2E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests */,
+			);
+			name = "hr_monitor_for_watch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "hr_monitor_for_watch Watch AppTests";
+			productReference = EE8BECB92E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE8BECC22E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8BECD72E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch AppUITests" */;
+			buildPhases = (
+				EE8BECBF2E8A756300C5A8BD /* Sources */,
+				EE8BECC02E8A756300C5A8BD /* Frameworks */,
+				EE8BECC12E8A756300C5A8BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE8BECC52E8A756300C5A8BD /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EE8BECC62E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests */,
+			);
+			name = "hr_monitor_for_watch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "hr_monitor_for_watch Watch AppUITests";
+			productReference = EE8BECC32E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		EE973F002E65BC75004910FD /* hr_monitor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE973F232E65BC76004910FD /* Build configuration list for PBXNativeTarget "hr_monitor" */;
@@ -102,13 +270,12 @@
 				EE973EFD2E65BC75004910FD /* Sources */,
 				EE973EFE2E65BC75004910FD /* Frameworks */,
 				EE973EFF2E65BC75004910FD /* Resources */,
+				EE8BECCE2E8A756300C5A8BD /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				EE973F032E65BC75004910FD /* hr_monitor */,
+				EE8BECCC2E8A756300C5A8BD /* PBXTargetDependency */,
 			);
 			name = hr_monitor;
 			packageProductDependencies = (
@@ -131,6 +298,7 @@
 				EE973F112E65BC76004910FD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				EE8BECFB2E8A833D00C5A8BD /* hr_monitor */,
 				EE973F122E65BC76004910FD /* hr_monitorTests */,
 			);
 			name = hr_monitorTests;
@@ -173,6 +341,17 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					EE8BECAC2E8A756200C5A8BD = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					EE8BECB82E8A756300C5A8BD = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = EE8BECAC2E8A756200C5A8BD;
+					};
+					EE8BECC22E8A756300C5A8BD = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = EE8BECAC2E8A756200C5A8BD;
+					};
 					EE973F002E65BC75004910FD = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -203,11 +382,35 @@
 				EE973F002E65BC75004910FD /* hr_monitor */,
 				EE973F0E2E65BC76004910FD /* hr_monitorTests */,
 				EE973F182E65BC76004910FD /* hr_monitorUITests */,
+				EE8BECAC2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */,
+				EE8BECB82E8A756300C5A8BD /* hr_monitor_for_watch Watch AppTests */,
+				EE8BECC22E8A756300C5A8BD /* hr_monitor_for_watch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EE8BECAB2E8A756200C5A8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECB72E8A756300C5A8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECC12E8A756300C5A8BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE973EFF2E65BC75004910FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +435,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EE8BECA92E8A756200C5A8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECB52E8A756300C5A8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE8BECBF2E8A756300C5A8BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE973EFD2E65BC75004910FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +480,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EE8BECBB2E8A756300C5A8BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE8BECAC2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */;
+			targetProxy = EE8BECBA2E8A756300C5A8BD /* PBXContainerItemProxy */;
+		};
+		EE8BECC52E8A756300C5A8BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE8BECAC2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */;
+			targetProxy = EE8BECC42E8A756300C5A8BD /* PBXContainerItemProxy */;
+		};
+		EE8BECCC2E8A756300C5A8BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE8BECAC2E8A756200C5A8BD /* hr_monitor_for_watch Watch App */;
+			targetProxy = EE8BECCB2E8A756300C5A8BD /* PBXContainerItemProxy */;
+		};
 		EE973F112E65BC76004910FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EE973F002E65BC75004910FD /* hr_monitor */;
@@ -269,6 +508,145 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EE8BECCF2E8A756300C5A8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = hr_monitor_for_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "hflow.hr-monitor";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Debug;
+		};
+		EE8BECD02E8A756300C5A8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = hr_monitor_for_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "hflow.hr-monitor";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Release;
+		};
+		EE8BECD12E8A756300C5A8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor-for-watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hr_monitor_for_watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/hr_monitor_for_watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Debug;
+		};
+		EE8BECD22E8A756300C5A8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor-for-watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hr_monitor_for_watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/hr_monitor_for_watch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Release;
+		};
+		EE8BECD32E8A756300C5A8BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor-for-watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "hr_monitor_for_watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Debug;
+		};
+		EE8BECD42E8A756300C5A8BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W8YP553DUM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hflow.hr-monitor-for-watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "hr_monitor_for_watch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Release;
+		};
 		EE973F212E65BC76004910FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -420,7 +798,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
@@ -463,7 +842,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
@@ -564,6 +944,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EE8BECD52E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8BECCF2E8A756300C5A8BD /* Debug */,
+				EE8BECD02E8A756300C5A8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8BECD62E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8BECD12E8A756300C5A8BD /* Debug */,
+				EE8BECD22E8A756300C5A8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE8BECD72E8A756300C5A8BD /* Build configuration list for PBXNativeTarget "hr_monitor_for_watch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8BECD32E8A756300C5A8BD /* Debug */,
+				EE8BECD42E8A756300C5A8BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EE973EFC2E65BC75004910FD /* Build configuration list for PBXProject "hr_monitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
