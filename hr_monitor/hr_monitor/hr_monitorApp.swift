@@ -27,6 +27,8 @@ struct ContentView: View {
     private let heartRateMonitor = HeartRateMonitorManager()
     @State private var currentHeartRate: Double = 10
     @State private var isAuthorized = false
+    @State private var t = Date()
+    @State private var tt = Date()
     
     var body: some View {
         VStack {
@@ -37,6 +39,8 @@ struct ContentView: View {
                 Text("当前心率: \(Int(self.currentHeartRate)) bpm")
                     .font(.largeTitle)
                     .padding()
+                Text("hr time: \(tt)")
+                Text("time: \(t)")
             } else {
                 Text("正在请求 HealthKit 权限...")
                     .padding()
@@ -44,9 +48,11 @@ struct ContentView: View {
         }
         .onAppear {
             // 设置心率更新回调
-            heartRateMonitor.onHeartRateUpdate = { heartRate in
+            heartRateMonitor.onHeartRateUpdate = { heartRate, hrt in
                 DispatchQueue.main.async {
                     self.currentHeartRate = heartRate
+                    self.t = Date()
+                    self.tt = hrt
                 }
             }
             

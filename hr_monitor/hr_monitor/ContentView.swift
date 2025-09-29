@@ -13,10 +13,10 @@ class HeartRateMonitorManager: NSObject {
     private let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
     private var backgroundQuery: HKObserverQuery?
     private var timer: Timer?
-    private var queryInterval: TimeInterval = 5.0 // 默认5秒间隔
+    private var queryInterval: TimeInterval = 1.0 // 默认5秒间隔
     
     // 心率数据更新回调
-    var onHeartRateUpdate: ((Double) -> Void)?
+    var onHeartRateUpdate: ((Double, Date) -> Void)?
     var onAuthorizationStatus: ((Bool, String) -> Void)?
     
     // 设置查询间隔（秒）
@@ -34,12 +34,12 @@ class HeartRateMonitorManager: NSObject {
         guard HKHealthStore.isHealthDataAvailable() else {
             print("HealthKit 不可用")
             completion?(false)
-            return 
+            return
         }
         // 只请求读取权限，不需要写入权限
         let readTypes: Set<HKSampleType> = [heartRateType]
         
-        healthStore.requestAuthorization(toShare: nil, read: readTypes) { [weak self] success, error in
+        healthStore.requestAuthorization(toShare: [heartRateType], read: readTypes) { [weak self] success, error in
             DispatchQueue.main.async {
                 if success {
                     print("HealthKit 授权请求完成")
@@ -86,7 +86,7 @@ class HeartRateMonitorManager: NSObject {
         
         // 检查授权状态
         let status = healthStore.authorizationStatus(for: heartRateType)
-        if status != .sharingAuthorized else {
+        if status != .sharingAuthorized {
             print("未获得心率数据访问权限，当前状态: \(status.rawValue)")
             // self.authorizeHealthKit(completion: nil)
             // return
@@ -100,6 +100,7 @@ class HeartRateMonitorManager: NSObject {
         // 启动定时器定期查询
         timer = Timer.scheduledTimer(withTimeInterval: queryInterval, repeats: true) { [weak self] _ in
             self?.fetchLatestHeartRate()
+            print("----\(Date())-----")
         }
         
         // 立即获取一次当前心率
@@ -157,18 +158,18 @@ class HeartRateMonitorManager: NSObject {
                 return
             }
             
-            guard let sample = samples?.first as? HKQuantitySample else {
+            guard var sample = samples?.first as? HKQuantitySample else {
                 print("没有心率数据")
                 return
             }
             
-            let heartRateUnit = HKUnit(from: "count/min")
-            let heartRate = sample.quantity.doubleValue(for: heartRateUnit)
-            
+            var heartRateUnit = HKUnit(from: "count/min")
+            var heartRate = sample.quantity.doubleValue(for: heartRateUnit)
+            print("\n\(samples)...\n")
             print("获取到心率: \(heartRate) bpm, 时间: \(sample.endDate)")
             
             DispatchQueue.main.async {
-                self?.onHeartRateUpdate?(heartRate)
+                self?.onHeartRateUpdate?(heartRate, sample.endDate)
             }
         }
         

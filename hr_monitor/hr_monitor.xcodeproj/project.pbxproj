@@ -398,9 +398,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = ss;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "we get it to use";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = yNSHealthShareUsageDescription;
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = s;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "we get it to use";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -441,9 +441,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = ss;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "we get it to use";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = yNSHealthShareUsageDescription;
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = s;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "we get it to use";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
