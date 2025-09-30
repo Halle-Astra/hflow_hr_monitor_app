@@ -25,9 +25,12 @@
 
 
 import SwiftUI
+import HealthKit
 
 struct ContentView: View {
     @StateObject private var heartRateMonitor = HeartRateMonitorManager()
+    private let healthStore = HKHealthStore()
+    let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
     
     var body: some View {
         VStack(spacing: 15) {
@@ -102,6 +105,23 @@ struct ContentView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
+                        .onAppear{
+                            print("...Nothing")
+//                            var completion: ((Bool) -> Bool)? = nil
+//                            // 只请求读取权限，不需要写入权限
+//                            let readTypes: Set<HKSampleType> = [heartRateType]
+//                            healthStore.requestAuthorization(toShare: [heartRateType], read: readTypes) {  success, error in
+//                                DispatchQueue.main.async {
+//                                    if success {
+//                                        print("HealthKit 授权请求完成")
+//                                        
+//                                    } else {
+//                                        print("HealthKit 授权失败: \(error?.localizedDescription ?? "未知错误")")
+//                                        completion?(false)
+//                                    }
+//                                }
+//                            }
+                        }
                 }
                 .padding()
             }

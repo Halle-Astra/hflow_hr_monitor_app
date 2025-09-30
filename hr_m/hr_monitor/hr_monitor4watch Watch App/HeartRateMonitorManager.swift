@@ -14,6 +14,7 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
     private var workoutSession: HKWorkoutSession?
     private var heartRateQuery: HKQuery?
     private var connectivityManager: WatchConnectivityManager?
+    let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
     
     @Published var currentHeartRate: Double = 0
     @Published var lastHeartRateTimestamp: Date = Date()
@@ -34,14 +35,20 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
             return
         }
         
-        let typesToRead: Set<HKObjectType> = [
-            HKObjectType.quantityType(forIdentifier: .heartRate)!,
-            HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
-            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
+        let typesToRead: Set<HKSampleType> = [
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+//            HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
+//            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
         ]
+        // 定义要写入的数据类型（重要！）
+            let shareTypes: Set<HKSampleType> = [
+                HKObjectType.quantityType(forIdentifier: .heartRate)!,
+//                HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
+                // 添加其他您想要写入的数据类型
+            ]
         
-        healthStore.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] success, error in
-            DispatchQueue.main.async {
+        healthStore.requestAuthorization(toShare: shareTypes, read: typesToRead) { [weak self] success, error in
+//            DispatchQueue.main.async {
                 if success {
                     print("✅ HealthKit 授权成功")
                     self?.isAuthorized = true
@@ -52,7 +59,7 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
                     self?.isAuthorized = false
                     self?.connectivityManager?.sendAuthorizationStatus("授权失败")
                 }
-            }
+//            }
         }
     }
     
@@ -100,6 +107,7 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
             limit: HKObjectQueryNoLimit
         ) { [weak self] (query, samples, deletedObjects, anchor, error) in
             self?.processHeartRateSamples(samples)
+                
         }
         
         query.updateHandler = { [weak self] (query, samples, deletedObjects, anchor, error) in
