@@ -15,6 +15,8 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
     private var heartRateQuery: HKQuery?
     private var connectivityManager: WatchConnectivityManager?
     let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+    private var lastProcessedSampleID: UUID?
+    private var processingTimer: Timer?
     
     @Published var currentHeartRate: Double = 0
     @Published var lastHeartRateTimestamp: Date = Date()
@@ -37,29 +39,31 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
         
         let typesToRead: Set<HKSampleType> = [
             HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-//            HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
-//            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
+            //            HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
+            //            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
         ]
         // 定义要写入的数据类型（重要！）
-            let shareTypes: Set<HKSampleType> = [
-                HKObjectType.quantityType(forIdentifier: .heartRate)!,
-//                HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
-                // 添加其他您想要写入的数据类型
-            ]
+        let shareTypes: Set<HKSampleType> = [
+            HKObjectType.quantityType(forIdentifier: .heartRate)!,
+            //                HKObjectType.quantityType(forIdentifier: .restingHeartRate)!,
+            // 添加其他您想要写入的数据类型
+        ]
         
         healthStore.requestAuthorization(toShare: shareTypes, read: typesToRead) { [weak self] success, error in
-//            DispatchQueue.main.async {
-                if success {
-                    print("✅ HealthKit 授权成功")
-                    self?.isAuthorized = true
-                    // 通知手机授权状态
-                    self?.connectivityManager?.sendAuthorizationStatus("已授权")
-                } else {
-                    print("❌ HealthKit 授权失败: \(error?.localizedDescription ?? "未知错误")")
-                    self?.isAuthorized = false
-                    self?.connectivityManager?.sendAuthorizationStatus("授权失败")
-                }
-//            }
+            //            DispatchQueue.main.async {
+            if success {
+                print("✅ HealthKit 授权成功")
+                self?.isAuthorized = true
+                // 通知手机授权状态
+                // 没有用，watchconnectivityManager初始化需要当前类，所以没法发送出去，授权失败时同理，后面这部分逻辑需要修改
+                //self?.connectivityManager?.sendAuthorizationStatus("已授权")
+            } else {
+                print("❌ HealthKit 授权失败: \(error?.localizedDescription ?? "未知错误")")
+                self?.isAuthorized = false
+                // 没有用，watchconnectivityManager初始化需要当前类，所以没法发送出去，授权失败时同理，后面这部分逻辑需要修改
+                // self?.connectivityManager?.sendAuthorizationStatus("授权失败")
+            }
+            //            }
         }
     }
     
@@ -100,44 +104,69 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
             return
         }
         
+        startSmartHeartRateMonitoring()
+    }
+    
+    
+    private func startSmartHeartRateMonitoring() {
+        guard let quantityType = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
+        
         let query = HKAnchoredObjectQuery(
             type: quantityType,
-            predicate: nil,
+            predicate: nil,  // 无时间限制
             anchor: nil,
             limit: HKObjectQueryNoLimit
         ) { [weak self] (query, samples, deletedObjects, anchor, error) in
-            self?.processHeartRateSamples(samples)
-                
+            self?.processSamplesIntelligently(samples)
         }
         
         query.updateHandler = { [weak self] (query, samples, deletedObjects, anchor, error) in
-            self?.processHeartRateSamples(samples)
+            self?.processSamplesIntelligently(samples)
         }
         
         healthStore.execute(query)
         heartRateQuery = query
+        
+        // 启动定期清理
+        startCleanupTimer()
     }
     
-    private func processHeartRateSamples(_ samples: [HKSample]?) {
+    private func processSamplesIntelligently(_ samples: [HKSample]?) {
         guard let heartRateSamples = samples as? [HKQuantitySample] else { return }
         
-        for sample in heartRateSamples {
-            let heartRateUnit = HKUnit.count().unitDivided(by: .minute())
-            let value = sample.quantity.doubleValue(for: heartRateUnit)
-            let sampleTimestamp = sample.startDate
-            
-            DispatchQueue.main.async {
-                self.currentHeartRate = value
-                self.lastHeartRateTimestamp = sampleTimestamp
-                
-                // 调用更新回调
-                self.onHeartRateUpdate?(value, sampleTimestamp)
-                
-                // 发送到手机
-                self.connectivityManager?.sendHeartRateToPhone(value, timestamp: sampleTimestamp)
-                
-                print("❤️ 心率更新: \(value) BPM, 时间: \(sampleTimestamp)")
+        // 智能过滤：只处理最新的、未处理过的样本
+        let sortedSamples = heartRateSamples.sorted { $0.startDate > $1.startDate }
+        
+        for sample in sortedSamples.prefix(2) { // 只处理最新的2个
+            // 避免重复处理同一个样本
+            if sample.uuid != lastProcessedSampleID {
+                processSingleSample(sample)
+                lastProcessedSampleID = sample.uuid
+                break  // 只处理一个最新样本
             }
+        }
+    }
+    
+    private func processSingleSample(_ sample: HKQuantitySample) {
+        let heartRateUnit = HKUnit.count().unitDivided(by: .minute())
+        let value = sample.quantity.doubleValue(for: heartRateUnit)
+        let sampleTimestamp = sample.startDate
+        
+        DispatchQueue.main.async {
+            self.currentHeartRate = value
+            self.lastHeartRateTimestamp = sampleTimestamp
+            
+            self.onHeartRateUpdate?(value, sampleTimestamp)
+            self.connectivityManager?.sendHeartRateToPhone(value, timestamp: sampleTimestamp)
+            
+            print("❤️ 智能心率: \(value) BPM， 测量时间： \(sampleTimestamp)")
+        }
+    }
+    
+    private func startCleanupTimer() {
+        processingTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+            // 定期清理，防止内存积累
+            self?.lastProcessedSampleID = nil
         }
     }
 }

@@ -35,17 +35,11 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 15) {
             // 标题
-            Text("心率监测")
-                .font(.title2)
-                .fontWeight(.semibold)
             
             // 授权状态
             if heartRateMonitor.isAuthorized {
                 // 心率显示
                 VStack {
-                    Text("当前心率")
-                        .font(.headline)
-                        .foregroundColor(.gray)
                     
                     Text("\(Int(heartRateMonitor.currentHeartRate))")
                         .font(.system(size: 48, weight: .bold, design: .rounded))
@@ -62,15 +56,15 @@ struct ContentView: View {
                 
                 // 监测状态
                 HStack {
-                    Circle()
-                        .fill(heartRateMonitor.isMonitoring ? Color.green : Color.gray)
-                        .frame(width: 8, height: 8)
-                    Text(heartRateMonitor.isMonitoring ? "监测中" : "已停止")
-                        .font(.caption)
-                        .foregroundColor(heartRateMonitor.isMonitoring ? .green : .gray)
+//                    Circle()
+//                        .fill(heartRateMonitor.isMonitoring ? Color.green : Color.gray)
+//                        .frame(width: 8, height: 8)
+//                    Text(heartRateMonitor.isMonitoring ? "监测中" : "已停止")
+//                        .font(.caption)
+//                        .foregroundColor(heartRateMonitor.isMonitoring ? .green : .gray)
                 }
                 
-                Spacer()
+                //Spacer()
                 
                 // 控制按钮
                 Button(action: {
@@ -155,3 +149,4 @@ struct ContentView: View {
         return formatter.string(from: date)
     }
 }
+
