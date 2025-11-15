@@ -23,3 +23,5 @@ public struct MessageType {
     public static let heartRate = "heartRate"
     public static let authorizationStatus = "authorizationStatus"
 }
+
+

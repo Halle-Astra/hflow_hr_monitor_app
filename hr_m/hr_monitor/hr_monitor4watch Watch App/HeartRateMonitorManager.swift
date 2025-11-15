@@ -7,7 +7,8 @@
 
 import HealthKit
 import WatchConnectivity
-
+//import UIKit
+import WatchKit
 
 class HeartRateMonitorManager: NSObject, ObservableObject {
     private let healthStore = HKHealthStore()
@@ -18,6 +19,11 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
     private var lastProcessedSampleID: UUID?
     private var processingTimer: Timer?
     
+    
+    private var cloudServiceManager: CloudServiceManager
+        private let deviceId: String
+        private let sessionId: String
+    
     @Published var currentHeartRate: Double = 0
     @Published var lastHeartRateTimestamp: Date = Date()
     @Published var isAuthorized = false
@@ -26,6 +32,10 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
     var onHeartRateUpdate: ((Double, Date) -> Void)?
     
     override init() {
+        self.deviceId = WKInterfaceDevice.current().identifierForVendor?.uuidString ?? "unknown"
+                self.sessionId = UUID().uuidString
+                self.cloudServiceManager = CloudServiceManager()
+        
         super.init()
         self.connectivityManager = WatchConnectivityManager(heartRateMonitor: self)
     }
@@ -168,5 +178,41 @@ class HeartRateMonitorManager: NSObject, ObservableObject {
             // 定期清理，防止内存积累
             self?.lastProcessedSampleID = nil
         }
+    }
+    
+    // 为加入音乐功能的ai代码
+    private func processSingleHeartRateSample(_ sample: HKQuantitySample) {
+        let heartRateUnit = HKUnit.count().unitDivided(by: .minute())
+        let value = sample.quantity.doubleValue(for: heartRateUnit)
+        let sampleTimestamp = sample.startDate
+        
+        DispatchQueue.main.async {
+            self.currentHeartRate = value
+            self.lastHeartRateTimestamp = sampleTimestamp
+            
+            // 发送到手机
+            self.connectivityManager?.sendHeartRateToPhone(value, timestamp: sampleTimestamp)
+            
+            // 上传到云端
+            let heartRateData = HeartRateData(
+                value: value,
+                timestamp: sampleTimestamp,
+                deviceId: self.deviceId,
+                sessionId: self.sessionId
+            )
+            self.cloudServiceManager.uploadHeartRateData(heartRateData)
+            
+            print("❤️ 心率: \(value) BPM - 已上传云端")
+        }
+    }
+    
+    func startCompleteMonitoring() {
+        startHeartRateMonitoring()
+        cloudServiceManager.startPeriodicTasks()
+    }
+    
+    func stopCompleteMonitoring() {
+        stopHeartRateMonitoring()
+        cloudServiceManager.stopPeriodicTasks()
     }
 }
